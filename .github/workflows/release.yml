@@ -71,6 +71,7 @@ jobs:
       - name: Create GitHub release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_IS_PREVIEW: ${{ steps.release_meta.outputs.is_preview }}
         shell: bash
         run: |
           set -euo pipefail
@@ -112,8 +113,6 @@ jobs:
               print(exc.read().decode('utf-8'), file=sys.stderr)
               raise
           PY
-        env:
-          RELEASE_IS_PREVIEW: ${{ steps.release_meta.outputs.is_preview }}
 
       - name: Upload release assets
         env:
