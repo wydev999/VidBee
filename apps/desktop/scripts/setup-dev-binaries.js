@@ -1036,27 +1036,26 @@ async function setup() {
   log(`Setting up development binaries for ${platform}...`, 'info')
   ensureDir(RESOURCES_DIR)
 
-  try {
-    // Download yt-dlp
-    await downloadYtDlp(config)
-
-    // Download JS runtime (Deno)
-    await downloadDenoRuntime()
-
-    // Download ffmpeg
-    if (platform === 'win32') {
-      await downloadFfmpegWindows(config)
-    } else if (platform === 'darwin') {
-      await downloadFfmpegMac(config)
-    } else if (platform === 'linux') {
-      await downloadFfmpegLinux(config)
+  const downloadOrWarn = async (label, downloadFn) => {
+    try {
+      await downloadFn()
+    } catch (error) {
+      log(`${label} download failed: ${error.message} (app may still start)`, 'warn')
     }
-
-    log('Development environment setup completed!', 'success')
-  } catch (error) {
-    log(`Setup failed: ${error.message}`, 'error')
-    process.exit(1)
   }
+
+  await downloadOrWarn('yt-dlp', () => downloadYtDlp(config))
+  await downloadOrWarn('Deno', () => downloadDenoRuntime())
+
+  if (platform === 'win32') {
+    await downloadOrWarn('ffmpeg', () => downloadFfmpegWindows(config))
+  } else if (platform === 'darwin') {
+    await downloadOrWarn('ffmpeg', () => downloadFfmpegMac(config))
+  } else if (platform === 'linux') {
+    await downloadOrWarn('ffmpeg', () => downloadFfmpegLinux(config))
+  }
+
+  log('Development environment setup completed!', 'success')
 }
 
 // Run setup when executed directly

@@ -323,6 +323,7 @@
     "preferences": "Tercihler",
     "supportedSites": "Desteklenen Siteler",
     "tools": "Araçlar",
+    "toolUpdates": "Araç Güncellemeleri",
     "theme": "Tema:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "RSSHub Dökümantasyonunu Aç",
       "hint": "RSS besleme URL'iniz yok mu? RSSHub'ı kullanarak YouTube, Twitter ve binlerce diğer platform için RSS beslemeleri oluşturun."
     }
+  },
+  "tools": {
+    "title": "Araçlar",
+    "description": "Paketlenmiş araçları kontrol et ve güncelle",
+    "checkUpdates": "Güncellemeleri kontrol et",
+    "currentVersion": "Mevcut sürüm",
+    "latestVersion": "En son",
+    "updateAvailable": "Güncelleme mevcut",
+    "upToDate": "Güncel",
+    "updating": "Güncelleniyor...",
+    "updateNow": "Şimdi güncelle",
+    "unknown": "Bilinmiyor"
   },
   "sites": {
     "homeInlineDescription": "{{sites}} ve daha fazlasını destekler.",

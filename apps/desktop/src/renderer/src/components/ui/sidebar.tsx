@@ -5,15 +5,21 @@ import { useTranslation } from 'react-i18next'
 import '../../assets/title-bar.css'
 import { updateAvailableAtom } from '@renderer/store/update'
 
-type Page = 'home' | 'subscriptions' | 'tools' | 'settings' | 'about'
+export type Page = 'home' | 'subscriptions' | 'tools' | 'settings' | 'about'
 
 interface SidebarProps {
   currentPage: Page
   onPageChange: (page: Page) => void
   onOpenSupportedSites: () => void
+  onOpenTools: () => void
 }
 
-export function Sidebar({ currentPage, onPageChange, onOpenSupportedSites }: SidebarProps) {
+export function Sidebar({
+  currentPage,
+  onPageChange,
+  onOpenSupportedSites,
+  onOpenTools
+}: SidebarProps) {
   const { t } = useTranslation()
   const updateAvailable = useAtomValue(updateAvailableAtom)
 
@@ -39,11 +45,17 @@ export function Sidebar({ currentPage, onPageChange, onOpenSupportedSites }: Sid
       onClick: onOpenSupportedSites
     },
     {
-      id: 'tools',
+      id: 'tool-updates',
       active: currentPage === 'tools',
       icon: appSidebarIcons.tools,
-      label: t('menu.tools'),
+      label: t('menu.toolUpdates'),
       onClick: () => onPageChange('tools')
+    },
+    {
+      id: 'tools',
+      icon: appSidebarIcons.tools,
+      label: t('menu.tools'),
+      onClick: onOpenTools
     }
   ]
 

@@ -323,6 +323,7 @@
     "preferences": "Preferensi",
     "supportedSites": "Situs yang Didukung",
     "tools": "Alat",
+    "toolUpdates": "Pembaruan Alat",
     "theme": "Tema:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "Buka Dokumentasi RSSHub",
       "hint": "Tidak punya URL feed RSS? Gunakan RSSHub untuk menghasilkan feed RSS untuk YouTube, Twitter, dan ribuan platform lainnya."
     }
+  },
+  "tools": {
+    "title": "Alat",
+    "description": "Periksa dan perbarui alat yang disertakan",
+    "checkUpdates": "Periksa pembaruan",
+    "currentVersion": "Versi saat ini",
+    "latestVersion": "Terbaru",
+    "updateAvailable": "Pembaruan tersedia",
+    "upToDate": "Terbaru",
+    "updating": "Memperbarui...",
+    "updateNow": "Perbarui sekarang",
+    "unknown": "Tidak diketahui"
   },
   "sites": {
     "homeInlineDescription": "Mendukung {{sites}} dan lainnya.",

@@ -323,6 +323,7 @@
     "preferences": "Préférences",
     "supportedSites": "Sites Supportés",
     "tools": "Outils",
+    "toolUpdates": "Mises à jour des outils",
     "theme": "Thème :"
   },
   "notifications": {
@@ -621,8 +622,20 @@
       "description": "Combinez VidBee avec RSSHub pour activer les abonnements et les téléchargements automatisés à partir de diverses plateformes. \nUne fois configuré, VidBee s'exécute en arrière-plan et télécharge automatiquement les dernières vidéos et contenus.",
       "learnMore": "En savoir plus sur RSSHub",
       "openDocs": "Ouvrir la documentation RSSHub",
-      "hint": "Vous n'avez pas d'URL de flux RSS ? \nUtilisez RSSHub pour générer des flux RSS pour YouTube, Twitter et des milliers d'autres plateformes."
+      "hint": "Vous n'avez pas d'URL de flux RSS ? \nUtilisez RSSHub pour générer des flux RSS pour YouTube, Twitter et des milliers d'autres plateformes."
     }
+  },
+  "tools": {
+    "title": "Outils",
+    "description": "Vérifier et mettre à jour les outils inclus",
+    "checkUpdates": "Vérifier les mises à jour",
+    "currentVersion": "Version actuelle",
+    "latestVersion": "Dernière",
+    "updateAvailable": "Mise à jour disponible",
+    "upToDate": "À jour",
+    "updating": "Mise à jour...",
+    "updateNow": "Mettre à jour maintenant",
+    "unknown": "Inconnu"
   },
   "sites": {
     "homeInlineDescription": "Supporte {{sites}} et plus.",

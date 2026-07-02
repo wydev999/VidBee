@@ -323,6 +323,7 @@
     "preferences": "Настройки",
     "supportedSites": "Поддерживаемые сайты",
     "tools": "Инструменты",
+    "toolUpdates": "Обновления инструментов",
     "theme": "Тема:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "Открыть документацию RSSHub",
       "hint": "Нет URL RSS-канала? Используйте RSSHub для создания RSS-каналов для YouTube, Twitter и тысяч других платформ."
     }
+  },
+  "tools": {
+    "title": "Инструменты",
+    "description": "Проверить и обновить встроенные инструменты",
+    "checkUpdates": "Проверить обновления",
+    "currentVersion": "Текущая версия",
+    "latestVersion": "Последняя",
+    "updateAvailable": "Доступно обновление",
+    "upToDate": "Актуально",
+    "updating": "Обновление...",
+    "updateNow": "Обновить сейчас",
+    "unknown": "Неизвестно"
   },
   "sites": {
     "homeInlineDescription": "Поддерживает {{sites}} и другие.",

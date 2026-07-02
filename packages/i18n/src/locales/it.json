@@ -323,6 +323,7 @@
     "preferences": "Preferenze",
     "supportedSites": "Siti Supportati",
     "tools": "Strumenti",
+    "toolUpdates": "Aggiornamenti strumenti",
     "theme": "Tema:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "Apri la documentazione RSSHub",
       "hint": "Non hai l'URL del feed RSS? \nUtilizza RSSHub per generare feed RSS per YouTube, Twitter e migliaia di altre piattaforme."
     }
+  },
+  "tools": {
+    "title": "Strumenti",
+    "description": "Controlla e aggiorna gli strumenti inclusi",
+    "checkUpdates": "Controlla aggiornamenti",
+    "currentVersion": "Versione attuale",
+    "latestVersion": "Ultima",
+    "updateAvailable": "Aggiornamento disponibile",
+    "upToDate": "Aggiornato",
+    "updating": "Aggiornamento...",
+    "updateNow": "Aggiorna ora",
+    "unknown": "Sconosciuto"
   },
   "sites": {
     "homeInlineDescription": "Supporta {{sites}} e altro.",

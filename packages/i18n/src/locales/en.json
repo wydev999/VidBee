@@ -323,6 +323,7 @@
     "preferences": "Preferences",
     "supportedSites": "Supported Sites",
     "tools": "Tools",
+    "toolUpdates": "Tool Updates",
     "theme": "Theme:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "Open RSSHub Documentation",
       "hint": "Don't have an RSS feed URL? Use RSSHub to generate RSS feeds for YouTube, Twitter, and thousands of other platforms."
     }
+  },
+  "tools": {
+    "title": "Tools",
+    "description": "Check and update bundled tools",
+    "checkUpdates": "Check for updates",
+    "currentVersion": "Current version",
+    "latestVersion": "Latest",
+    "updateAvailable": "Update available",
+    "upToDate": "Up to date",
+    "updating": "Updating...",
+    "updateNow": "Update now",
+    "unknown": "Unknown"
   },
   "sites": {
     "homeInlineDescription": "Supports {{sites}} and more.",

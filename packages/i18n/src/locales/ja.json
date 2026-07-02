@@ -323,6 +323,7 @@
     "preferences": "設定",
     "supportedSites": "サポートされているサイト",
     "tools": "ツール",
+    "toolUpdates": "ツール更新",
     "theme": "テーマ："
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "RSSHub ドキュメントを開く",
       "hint": "RSS フィード URL をお持ちでない場合は、 \nRSSHub を使用して、YouTube、Twitter、その他数千のプラットフォーム用の RSS フィードを生成します。"
     }
+  },
+  "tools": {
+    "title": "ツール",
+    "description": "バンドルされたツールを確認して更新",
+    "checkUpdates": "更新を確認",
+    "currentVersion": "現在のバージョン",
+    "latestVersion": "最新",
+    "updateAvailable": "更新あり",
+    "upToDate": "最新",
+    "updating": "更新中...",
+    "updateNow": "今すぐ更新",
+    "unknown": "不明"
   },
   "sites": {
     "homeInlineDescription": "{{sites}}およびその他のサイトをサポートしています。",

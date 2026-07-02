@@ -1,4 +1,4 @@
-import { Sidebar } from '@renderer/components/ui/sidebar'
+import { type Page, Sidebar } from '@renderer/components/ui/sidebar'
 import { Toaster } from '@renderer/components/ui/sonner'
 import { TitleBar } from '@renderer/components/ui/title-bar'
 import type { SubscriptionRule } from '@shared/types'
@@ -19,15 +19,15 @@ import { About } from './pages/About'
 import { Home } from './pages/Home'
 import { Settings } from './pages/Settings'
 import { Subscriptions } from './pages/Subscriptions'
+import { Tools } from './pages/Tools'
 import { loadSettingsAtom, settingsAtom } from './store/settings'
 import { loadSubscriptionsAtom, setSubscriptionsAtom } from './store/subscriptions'
 import { updateAvailableAtom, updateReadyAtom } from './store/update'
 
-type Page = 'home' | 'subscriptions' | 'settings' | 'about'
-
 const pageToPath: Record<Page, string> = {
   home: '/',
   subscriptions: '/subscriptions',
+  tools: '/tools',
   settings: '/settings',
   about: '/about'
 }
@@ -42,6 +42,8 @@ const pathToPage = (pathname: string): Page => {
   switch (normalized) {
     case '/subscriptions':
       return 'subscriptions'
+    case '/tools':
+      return 'tools'
     case '/settings':
       return 'settings'
     case '/about':
@@ -275,6 +277,7 @@ function AppContent() {
               path="/"
             />
             <Route element={<Subscriptions />} path="/subscriptions" />
+            <Route element={<Tools />} path="/tools" />
             <Route element={<Settings />} path="/settings" />
             <Route element={<About />} path="/about" />
             <Route element={<Navigate replace to="/" />} path="*" />

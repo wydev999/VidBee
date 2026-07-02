@@ -323,6 +323,7 @@
     "preferences": "التفضيلات",
     "supportedSites": "المواقع المدعومة",
     "tools": "الأدوات",
+    "toolUpdates": "تحديثات الأدوات",
     "theme": "المظهر:"
   },
   "notifications": {
@@ -623,6 +624,18 @@
       "openDocs": "فتح وثائق RSSHub",
       "hint": "ليس لديك رابط تغذية RSS؟ استخدم RSSHub لإنشاء تغذيات RSS لـ YouTube و Twitter والآلاف من المنصات الأخرى."
     }
+  },
+  "tools": {
+    "title": "الأدوات",
+    "description": "التحقق من الأدوات المضمنة وتحديثها",
+    "checkUpdates": "التحقق من التحديثات",
+    "currentVersion": "الإصدار الحالي",
+    "latestVersion": "الأحدث",
+    "updateAvailable": "تحديث متاح",
+    "upToDate": "محدث",
+    "updating": "جارٍ التحديث...",
+    "updateNow": "تحديث الآن",
+    "unknown": "غير معروف"
   },
   "sites": {
     "homeInlineDescription": "يدعم {{sites}} والمزيد.",
