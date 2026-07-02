@@ -29,6 +29,33 @@ on:
         required: false
       SENTRY_AUTH_TOKEN:
         required: false
+  workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to upload build artifacts'
+      MAC_CERT_P12_BASE64:
+        required: false
+      MAC_CERT_P12_PASSWORD:
+        required: false
+      APPLE_API_KEY_ID:
+        required: false
+      APPLE_API_ISSUER:
+        required: false
+      APPLE_API_KEY_P8_BASE64:
+        required: false
+      VITE_GLITCHTIP_DSN:
+        required: false
+      SENTRY_URL:
+        required: false
+      SENTRY_ORG:
+        required: false
+      SENTRY_PROJECT:
+        required: false
+      SENTRY_AUTH_TOKEN:
+        required: false
 
 jobs:
   build:
