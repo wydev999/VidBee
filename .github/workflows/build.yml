@@ -6,7 +6,7 @@ on:
       upload_artifacts:
         required: false
         type: boolean
-        default: false
+        default: true
         description: 'Whether to upload build artifacts'
     secrets:
       MAC_CERT_P12_BASE64:
@@ -34,7 +34,7 @@ on:
       upload_artifacts:
         required: false
         type: boolean
-        default: false
+        default: true
         description: 'Whether to upload build artifacts'
       MAC_CERT_P12_BASE64:
         required: false
@@ -148,6 +148,7 @@ jobs:
       - name: Build application
         env:
           VIDBEE_MAC_FFMPEG_MODE: ${{ matrix.mac_ffmpeg_mode }}
+          CSC_IDENTITY_AUTO_DISCOVERY: false
           VITE_GLITCHTIP_DSN: ${{ secrets.VITE_GLITCHTIP_DSN }}
           VITE_GLITCHTIP_ENVIRONMENT: production
           SENTRY_URL: ${{ secrets.SENTRY_URL }}
