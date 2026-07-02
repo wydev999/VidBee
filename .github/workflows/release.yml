@@ -12,6 +12,9 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   build:
     uses: ./.github/workflows/build.yml
@@ -22,6 +25,8 @@ jobs:
   release:
     needs: [build]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     # Publish a GitHub release for tag pushes. Manual runs still stay artifact-only.
     if: github.ref_type == 'tag'
     steps:
@@ -41,9 +46,20 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: dist-*
+          pattern: VidBee-*
           merge-multiple: true
           path: dist/
+
+      - name: Validate downloaded assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! find dist -maxdepth 1 -type f | grep -q .; then
+            echo "::error::No release artifacts were downloaded from the build job."
+            exit 1
+          fi
+          echo "Downloaded files:"
+          find dist -maxdepth 1 -type f | sort
 
       - name: Create GitHub release
         env:
