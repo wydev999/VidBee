@@ -8,7 +8,7 @@ $Version = $PackageJson.version
 $WinUnpackedDir = Join-Path $DistDir 'win-unpacked'
 $PortableDir = Join-Path $DistDir 'VidBee-portable'
 $AppOutputDir = Join-Path $PortableDir 'app'
-$ZipPath = Join-Path $DistDir "vidbee-$Version-windows-portable.zip"
+$ZipPath = Join-Path $DistDir "VidBee-$Version-windows-portable.zip"
 
 if (-not (Test-Path -LiteralPath $WinUnpackedDir)) {
   throw "Missing win-unpacked build output: $WinUnpackedDir"

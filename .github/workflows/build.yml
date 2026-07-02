@@ -213,7 +213,7 @@ jobs:
         if: inputs.upload_artifacts == true
         uses: actions/upload-artifact@v4
         with:
-          name: dist-${{ matrix.os }}
+          name: VidBee-${{ matrix.platform }}-${{ github.run_number }}
           path: |
             apps/desktop/dist/*.exe
             apps/desktop/dist/*.zip

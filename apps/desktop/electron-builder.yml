@@ -36,17 +36,17 @@ win:
     - nsis
     - portable
 nsis:
-  artifactName: ${name}-${version}-setup.${ext}
+  artifactName: ${productName}-${version}-windows-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 portable:
-  artifactName: ${name}-${version}-portable.${ext}
+  artifactName: ${productName}-${version}-windows-portable.${ext}
 mac:
   hardenedRuntime: false
   gatekeeperAssess: false
   notarize: false
-  artifactName: ${name}-${version}-${arch}.${ext}
+  artifactName: ${productName}-${version}-macos-${arch}.${ext}
   target:
     - target: zip
       arch:
@@ -59,10 +59,11 @@ linux:
   maintainer: nexmoex@gmail.com
   category: Utility
 deb:
+  artifactName: ${productName}-${version}-linux.${ext}
   # Issue #378: fix chrome-sandbox SUID perms so the .deb launches.
   afterInstall: build/after-install.sh
 appImage:
-  artifactName: ${name}-${version}.${ext}
+  artifactName: ${productName}-${version}-linux.${ext}
 npmRebuild: true
 publish:
   provider: github
