@@ -8,6 +8,11 @@ on:
         type: boolean
         default: true
         description: 'Whether to upload build artifacts'
+      release_version:
+        required: false
+        type: string
+        default: ''
+        description: 'Optional version to stamp into the desktop app before building'
     secrets:
       MAC_CERT_P12_BASE64:
         required: false
@@ -36,6 +41,11 @@ on:
         type: boolean
         default: true
         description: 'Whether to upload build artifacts'
+      release_version:
+        required: false
+        type: string
+        default: ''
+        description: 'Optional version to stamp into the desktop app before building'
       MAC_CERT_P12_BASE64:
         required: false
       MAC_CERT_P12_PASSWORD:
@@ -138,12 +148,20 @@ jobs:
           echo "SIGNING_AVAILABLE=true" >> "$GITHUB_ENV"
 
       - name: Stamp release version and channel from tag
-        if: github.ref_type == 'tag'
+        if: github.ref_type == 'tag' || inputs.release_version != ''
         shell: bash
-        # Stamp the tag version into package.json and, for prerelease tags, set the publish
+        # Stamp the requested version into package.json and, for prerelease tags, set the publish
         # channel so electron-builder emits preview*.yml instead of latest*.yml (its GitHub
         # provider does not derive the channel from the version on its own).
-        run: node apps/desktop/scripts/stamp-release.mjs "${GITHUB_REF_NAME}"
+        run: |
+          version_input="${{ inputs.release_version }}"
+          if [[ -z "$version_input" ]]; then
+            version_input="${GITHUB_REF_NAME}"
+          fi
+          if [[ "$version_input" != v* ]]; then
+            version_input="v$version_input"
+          fi
+          node apps/desktop/scripts/stamp-release.mjs "$version_input"
 
       - name: Build application
         env:

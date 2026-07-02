@@ -26,6 +26,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       upload_artifacts: true
+      release_version: ${{ github.ref_name }}
     secrets: inherit
 
   release:
