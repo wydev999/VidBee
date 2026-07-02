@@ -45,25 +45,33 @@ jobs:
           merge-multiple: true
           path: dist/
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: VidBee ${{ github.ref_name }}
-          generate_release_notes: true
-          prerelease: ${{ steps.release_meta.outputs.is_preview == 'true' }}
-          files: |
-            dist/*.exe
-            dist/*.zip
-            dist/*.dmg
-            dist/*.AppImage
-            dist/*.snap
-            dist/*.deb
-            dist/*.rpm
-            dist/*.tar.gz
-            dist/*.yml
-            dist/*.blockmap
+      - name: Create GitHub release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          prerelease_flag=""
+          if [[ "${{ steps.release_meta.outputs.is_preview }}" == "true" ]]; then
+            prerelease_flag="--prerelease"
+          fi
+          gh release delete "${{ github.ref_name }}" --yes >/dev/null 2>&1 || true
+          gh release create "${{ github.ref_name }}" \
+            --title "VidBee ${{ github.ref_name }}" \
+            --notes "Automated release for ${{ github.ref_name }}" \
+            $prerelease_flag
+
+      - name: Upload release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in dist/*; do
+            if [[ -f "$file" ]]; then
+              echo "Uploading $file"
+              gh release upload "${{ github.ref_name }}" "$file" --clobber
+            fi
+          done
 
       - name: Notify Cloudflare Pages
         if: steps.release_meta.outputs.is_preview != 'true'
