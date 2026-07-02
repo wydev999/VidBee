@@ -9,3 +9,5 @@ allowBuilds:
   esbuild: true
   sharp: true
   spawn-sync: true
+fetchRetries: 5
+networkConcurrency: 3

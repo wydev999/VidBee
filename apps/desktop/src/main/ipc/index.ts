@@ -7,6 +7,7 @@ import { HistoryService } from './services/history-service'
 import { SettingsService } from './services/settings-service'
 import { SubscriptionService } from './services/subscription-service'
 import { ThumbnailService } from './services/thumbnail-service'
+import { ToolUpdateService } from './services/tool-update-service'
 import { UpdateService } from './services/update-service'
 import { WindowService } from './services/window-service'
 
@@ -20,6 +21,7 @@ export const services = createServices([
   SettingsService,
   SubscriptionService,
   ThumbnailService,
+  ToolUpdateService,
   UpdateService,
   WindowService
 ])

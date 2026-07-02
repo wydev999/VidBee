@@ -1,31 +1,27 @@
 #!/usr/bin/env node
 
-import { execSync, spawnSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import path from 'node:path'
 
 const desktopRoot = path.resolve(import.meta.dirname, '..')
-const checkScript =
-  "const Database=require('better-sqlite3');const db=new Database(':memory:');db.close()"
+const checkScriptPath = path.join(import.meta.dirname, 'better-sqlite3-check.cjs')
 
 function canLoadBetterSqlite3WithElectron() {
-  const result = spawnSync('pnpm', ['exec', 'electron', '-e', checkScript], {
-    cwd: desktopRoot,
-    env: {
-      ...process.env,
-      ELECTRON_RUN_AS_NODE: '1'
-    },
-    encoding: 'utf8'
-  })
-
-  if (result.status === 0) {
+  try {
+    execSync(`pnpm exec electron "${checkScriptPath}"`, {
+      cwd: desktopRoot,
+      env: {
+        ...process.env,
+        ELECTRON_RUN_AS_NODE: '1'
+      },
+      stdio: 'pipe'
+    })
     return true
+  } catch (error) {
+    const details = error.stderr?.toString().trim() || error.message || 'No output'
+    console.warn(`[native-deps] better-sqlite3 check failed: ${details}`)
+    return false
   }
-
-  const stderr = result.stderr?.trim()
-  const stdout = result.stdout?.trim()
-  const details = stderr || stdout || 'No output'
-  console.warn(`[native-deps] better-sqlite3 check failed: ${details}`)
-  return false
 }
 
 if (canLoadBetterSqlite3WithElectron()) {
@@ -36,7 +32,8 @@ if (canLoadBetterSqlite3WithElectron()) {
 console.log('[native-deps] Rebuilding Electron native dependencies...')
 execSync('pnpm exec electron-builder install-app-deps', {
   cwd: desktopRoot,
-  stdio: 'inherit'
+  stdio: 'inherit',
+  shell: true
 })
 
 if (!canLoadBetterSqlite3WithElectron()) {
