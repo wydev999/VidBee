@@ -22,8 +22,7 @@ jobs:
   release:
     needs: [build]
     runs-on: ubuntu-latest
-    # Only publish a GitHub release for tag pushes. A manual workflow_dispatch run
-    # has no tag, so it acts as a build-only smoke test (artifacts only, no release).
+    # Publish a GitHub release for tag pushes. Manual runs still stay artifact-only.
     if: github.ref_type == 'tag'
     steps:
       - name: Check out Git repository
@@ -49,6 +48,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          name: VidBee ${{ github.ref_name }}
           generate_release_notes: true
           prerelease: ${{ steps.release_meta.outputs.is_preview == 'true' }}
           files: |
@@ -63,7 +63,7 @@ jobs:
             dist/*.yml
             dist/*.blockmap
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify Cloudflare Pages
         if: steps.release_meta.outputs.is_preview != 'true'
